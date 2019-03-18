@@ -17,12 +17,12 @@
 
         <!--  Parámetros de conexión a la bd -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://idnowdb.cdss6awjuvt9.us-west-2.rds.amazonaws.com:3306/id_now_db"
+                        connectionURL="jdbc:mysql://Tuconexion a bd"
                         userId="id_now"
                         password="JeplaAyn23841">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.ticnow.security.model.admin" targetProject="salida">
+        <javaModelGenerator targetPackage="com.paquete.model.admin" targetProject="salida">
 
             <property name="enableSubPackages" value="true" />
         </javaModelGenerator>
@@ -32,7 +32,7 @@
         </sqlMapGenerator>
 
         <!-- También podríamos indicar el tipo ANNOTATEDMAPPER -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ticnow.security.idnow.admin.persistence.mappers"  targetProject="salida">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.paquete.admin.persistence.mappers"  targetProject="salida">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
