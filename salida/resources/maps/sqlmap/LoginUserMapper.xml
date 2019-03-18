@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ticnow.security.idnow.admin.persistence.mappers.LoginUserMapper">
+  <resultMap id="BaseResultMap" type="com.ticnow.security.model.admin.LoginUser">
+    
+    <id column="id_login_user" jdbcType="INTEGER" property="id_login_user" />
+    <result column="id_profile_user" jdbcType="INTEGER" property="id_profile_user" />
+    <result column="user_identifier" jdbcType="VARCHAR" property="user_identifier" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="id_status" jdbcType="INTEGER" property="id_status" />
+    <result column="dateCreation" jdbcType="TIMESTAMP" property="dateCreation" />
+    <result column="institution_id" jdbcType="DECIMAL" property="institution_id" />
+    <result column="external" jdbcType="BIT" property="external" />
+    <result column="baseLdap" jdbcType="VARCHAR" property="baseLdap" />
+    <result column="realName" jdbcType="VARCHAR" property="realName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    
+    id_login_user, id_profile_user, user_identifier, email, password, id_status, dateCreation, 
+    institution_id, external, baseLdap, realName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from LOGIN_USER
+    where id_login_user = #{id_login_user,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    
+    delete from LOGIN_USER
+    where id_login_user = #{id_login_user,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ticnow.security.model.admin.LoginUser">
+    
+    insert into LOGIN_USER (id_login_user, id_profile_user, user_identifier, 
+      email, password, id_status, 
+      dateCreation, institution_id, external, 
+      baseLdap, realName)
+    values (#{id_login_user,jdbcType=INTEGER}, #{id_profile_user,jdbcType=INTEGER}, #{user_identifier,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{id_status,jdbcType=INTEGER}, 
+      #{dateCreation,jdbcType=TIMESTAMP}, #{institution_id,jdbcType=DECIMAL}, #{external,jdbcType=BIT}, 
+      #{baseLdap,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ticnow.security.model.admin.LoginUser">
+    
+    insert into LOGIN_USER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id_login_user != null">
+        id_login_user,
+      </if>
+      <if test="id_profile_user != null">
+        id_profile_user,
+      </if>
+      <if test="user_identifier != null">
+        user_identifier,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="id_status != null">
+        id_status,
+      </if>
+      <if test="dateCreation != null">
+        dateCreation,
+      </if>
+      <if test="institution_id != null">
+        institution_id,
+      </if>
+      <if test="external != null">
+        external,
+      </if>
+      <if test="baseLdap != null">
+        baseLdap,
+      </if>
+      <if test="realName != null">
+        realName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id_login_user != null">
+        #{id_login_user,jdbcType=INTEGER},
+      </if>
+      <if test="id_profile_user != null">
+        #{id_profile_user,jdbcType=INTEGER},
+      </if>
+      <if test="user_identifier != null">
+        #{user_identifier,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="id_status != null">
+        #{id_status,jdbcType=INTEGER},
+      </if>
+      <if test="dateCreation != null">
+        #{dateCreation,jdbcType=TIMESTAMP},
+      </if>
+      <if test="institution_id != null">
+        #{institution_id,jdbcType=DECIMAL},
+      </if>
+      <if test="external != null">
+        #{external,jdbcType=BIT},
+      </if>
+      <if test="baseLdap != null">
+        #{baseLdap,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ticnow.security.model.admin.LoginUser">
+    
+    update LOGIN_USER
+    <set>
+      <if test="id_profile_user != null">
+        id_profile_user = #{id_profile_user,jdbcType=INTEGER},
+      </if>
+      <if test="user_identifier != null">
+        user_identifier = #{user_identifier,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="id_status != null">
+        id_status = #{id_status,jdbcType=INTEGER},
+      </if>
+      <if test="dateCreation != null">
+        dateCreation = #{dateCreation,jdbcType=TIMESTAMP},
+      </if>
+      <if test="institution_id != null">
+        institution_id = #{institution_id,jdbcType=DECIMAL},
+      </if>
+      <if test="external != null">
+        external = #{external,jdbcType=BIT},
+      </if>
+      <if test="baseLdap != null">
+        baseLdap = #{baseLdap,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        realName = #{realName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_login_user = #{id_login_user,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ticnow.security.model.admin.LoginUser">
+    
+    update LOGIN_USER
+    set id_profile_user = #{id_profile_user,jdbcType=INTEGER},
+      user_identifier = #{user_identifier,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      id_status = #{id_status,jdbcType=INTEGER},
+      dateCreation = #{dateCreation,jdbcType=TIMESTAMP},
+      institution_id = #{institution_id,jdbcType=DECIMAL},
+      external = #{external,jdbcType=BIT},
+      baseLdap = #{baseLdap,jdbcType=VARCHAR},
+      realName = #{realName,jdbcType=VARCHAR}
+    where id_login_user = #{id_login_user,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- Ubicación del JAR JDBC del gestor de Base de datos a usar, en este caso MySQL  -->
+    <classPathEntry location="mysql-connector-java-5.1.44-bin.jar" />
+
+    <!--  Generaremos para MyBatis versión 3 -->
+    <context id="DB1" targetRuntime="MyBatis3">
+
+        <!-- No generamos los comentarios -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--  Parámetros de conexión a la bd -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://idnowdb.cdss6awjuvt9.us-west-2.rds.amazonaws.com:3306/id_now_db"
+                        userId="id_now"
+                        password="JeplaAyn23841">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.ticnow.security.model.admin" targetProject="salida">
+
+            <property name="enableSubPackages" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="resources.maps.sqlmap"  targetProject="salida">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- También podríamos indicar el tipo ANNOTATEDMAPPER -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ticnow.security.idnow.admin.persistence.mappers"  targetProject="salida">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!-- Generamos el código fuente de todas las tablas evitando la generación varios métodos -->
+        <table tableName="%" enableCountByExample="false" enableDeleteByExample="false"
+               enableUpdateByExample="false" selectByPrimaryKeyQueryId="false"
+               selectByExampleQueryId="false" enableSelectByExample="false" modelType="flat">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
+
